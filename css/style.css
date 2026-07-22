@@ -163,16 +163,17 @@ ul {
 }
 
 .nav-cta {
-  background: var(--green);
-  color: var(--white) !important;
+  background: var(--gold);
+  color: var(--green-dark) !important;
   padding: 10px 20px;
   border-radius: 30px;
   font-weight: 600;
-  transition: background 0.2s ease;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
 }
 
 .nav-cta:hover {
-  background: var(--green-dark);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(217, 164, 65, 0.4);
 }
 
 .theme-toggle {
