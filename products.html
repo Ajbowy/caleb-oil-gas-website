@@ -2,6 +2,13 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8" />
+<script>
+(function () {
+  var saved = localStorage.getItem("theme");
+  var theme = saved || (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+  document.documentElement.setAttribute("data-theme", theme);
+})();
+</script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Products &amp; Services | Caleb Oil/Gas LTD</title>
 <meta name="description" content="Explore Caleb Oil/Gas LTD's range of petrol, diesel, LPG cooking gas and lubricants for homes and businesses." />
@@ -27,16 +34,22 @@
       <img src="assets/images/logo-icon.png" alt="Caleb Oil/Gas LTD logo" class="brand-mark" />
       Caleb Oil/Gas LTD
     </a>
-    <button class="menu-toggle" aria-label="Toggle menu">
-      <span></span><span></span><span></span>
-    </button>
-    <ul class="nav-links">
-      <li><a href="index.html">Home</a></li>
-      <li><a href="about.html">About Us</a></li>
-      <li><a href="products.html" class="active">Products &amp; Services</a></li>
-      <li><a href="contact.html">Contact</a></li>
-      <li><a href="contact.html" class="nav-cta">Get in Touch</a></li>
-    </ul>
+    <div class="nav-right">
+      <button class="theme-toggle" aria-label="Switch to dark mode" title="Switch to dark mode">
+        <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+        <svg class="icon-moon" viewBox="0 0 24 24" fill="currentColor"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
+      </button>
+      <button class="menu-toggle" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="products.html" class="active">Products &amp; Services</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="contact.html" class="nav-cta">Get in Touch</a></li>
+      </ul>
+    </div>
   </nav>
 </header>
 
@@ -57,7 +70,7 @@
     </div>
     <div>
       <span class="eyebrow">Fuel Supply</span>
-      <h2 style="color:var(--green-dark); font-size:1.7rem; margin:10px 0 14px;">Petrol &amp; Diesel</h2>
+      <h2 style="color:var(--heading); font-size:1.7rem; margin:10px 0 14px;">Petrol &amp; Diesel</h2>
       <p style="color:var(--text-muted);">Our fuel stations provide quality-assured petrol and diesel for private vehicles, commercial fleets, generators and industrial equipment. Every batch is handled under strict quality and safety standards to ensure consistent performance.</p>
       <div class="tag-list">
         <span class="tag">Petrol (PMS)</span>
@@ -74,7 +87,7 @@
     </div>
     <div>
       <span class="eyebrow">Household &amp; Commercial</span>
-      <h2 style="color:var(--green-dark); font-size:1.7rem; margin:10px 0 14px;">Cooking Gas (LPG)</h2>
+      <h2 style="color:var(--heading); font-size:1.7rem; margin:10px 0 14px;">Cooking Gas (LPG)</h2>
       <p style="color:var(--text-muted);">We distribute LPG cooking gas for homes, restaurants and businesses, with cylinder refill and exchange options in a range of sizes. Our handling procedures prioritize safety from storage to delivery.</p>
       <div class="tag-list">
         <span class="tag">Cylinder Refill</span>
@@ -91,7 +104,7 @@
     </div>
     <div>
       <span class="eyebrow">Vehicle &amp; Machinery Care</span>
-      <h2 style="color:var(--green-dark); font-size:1.7rem; margin:10px 0 14px;">Lubricants &amp; Engine Oils</h2>
+      <h2 style="color:var(--heading); font-size:1.7rem; margin:10px 0 14px;">Lubricants &amp; Engine Oils</h2>
       <p style="color:var(--text-muted);">Our lubricant range includes engine oils, gear oils and greases suited to a variety of vehicles and machinery, helping extend equipment life and maintain performance.</p>
       <div class="tag-list">
         <span class="tag">Engine Oils</span>
@@ -125,6 +138,60 @@
       <p>Strict safety protocols across storage, transport and delivery.</p>
     </div>
   </div>
+</section>
+
+<section style="background: var(--green-pale);">
+  <div class="section-header reveal">
+    <span class="eyebrow">Request a Quote</span>
+    <h2>Get Pricing for Your Order</h2>
+    <p>Tell us what you need and we'll get back to you with pricing and availability.</p>
+  </div>
+  <form name="quote" method="POST" data-netlify="true" netlify-honeypot="bot-field-quote" class="contact-form reveal" action="/thank-you.html" id="quote-form" novalidate>
+    <input type="hidden" name="form-name" value="quote" />
+    <p class="hidden-field">
+      <label>Don't fill this out if you're human: <input name="bot-field-quote" /></label>
+    </p>
+    <div class="form-row">
+      <div class="form-group">
+        <label for="quote-name">Full Name</label>
+        <input type="text" id="quote-name" name="name" required />
+        <span class="field-error" data-error-for="quote-name"></span>
+      </div>
+      <div class="form-group">
+        <label for="quote-phone">Phone Number</label>
+        <input type="tel" id="quote-phone" name="phone" required />
+        <span class="field-error" data-error-for="quote-phone"></span>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="quote-email">Email Address</label>
+      <input type="email" id="quote-email" name="email" required />
+      <span class="field-error" data-error-for="quote-email"></span>
+    </div>
+    <div class="form-row">
+      <div class="form-group">
+        <label for="quote-product">Product Interested In</label>
+        <select id="quote-product" name="product" required>
+          <option value="">Select a product</option>
+          <option value="Petrol/Diesel">Petrol / Diesel</option>
+          <option value="LPG Cooking Gas">LPG Cooking Gas</option>
+          <option value="Lubricants & Engine Oils">Lubricants &amp; Engine Oils</option>
+          <option value="Multiple / Not sure">Multiple / Not sure</option>
+        </select>
+        <span class="field-error" data-error-for="quote-product"></span>
+      </div>
+      <div class="form-group">
+        <label for="quote-quantity">Quantity Needed</label>
+        <input type="text" id="quote-quantity" name="quantity" placeholder="e.g. 500 litres, 20 cylinders" required />
+        <span class="field-error" data-error-for="quote-quantity"></span>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="quote-message">Additional Details</label>
+      <textarea id="quote-message" name="message" rows="4" placeholder="Delivery location, timing, or anything else we should know"></textarea>
+    </div>
+    <button type="submit" class="btn btn-primary">Request Quote</button>
+  </form>
 </section>
 
 <section class="cta-band">

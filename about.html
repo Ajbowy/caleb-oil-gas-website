@@ -2,6 +2,13 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8" />
+<script>
+(function () {
+  var saved = localStorage.getItem("theme");
+  var theme = saved || (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+  document.documentElement.setAttribute("data-theme", theme);
+})();
+</script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>About Us | Caleb Oil/Gas LTD</title>
 <meta name="description" content="Learn about Caleb Oil/Gas LTD's history, mission and values as a trusted distributor of fuel, cooking gas and lubricants." />
@@ -27,16 +34,22 @@
       <img src="assets/images/logo-icon.png" alt="Caleb Oil/Gas LTD logo" class="brand-mark" />
       Caleb Oil/Gas LTD
     </a>
-    <button class="menu-toggle" aria-label="Toggle menu">
-      <span></span><span></span><span></span>
-    </button>
-    <ul class="nav-links">
-      <li><a href="index.html">Home</a></li>
-      <li><a href="about.html" class="active">About Us</a></li>
-      <li><a href="products.html">Products &amp; Services</a></li>
-      <li><a href="contact.html">Contact</a></li>
-      <li><a href="contact.html" class="nav-cta">Get in Touch</a></li>
-    </ul>
+    <div class="nav-right">
+      <button class="theme-toggle" aria-label="Switch to dark mode" title="Switch to dark mode">
+        <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+        <svg class="icon-moon" viewBox="0 0 24 24" fill="currentColor"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
+      </button>
+      <button class="menu-toggle" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html" class="active">About Us</a></li>
+        <li><a href="products.html">Products &amp; Services</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="contact.html" class="nav-cta">Get in Touch</a></li>
+      </ul>
+    </div>
   </nav>
 </header>
 
@@ -54,7 +67,7 @@
   <div class="two-col">
     <div class="reveal">
       <span class="eyebrow">Our Story</span>
-      <h2 style="color:var(--green-dark); font-size:1.8rem; margin:10px 0 16px;">Who We Are</h2>
+      <h2 style="color:var(--heading); font-size:1.8rem; margin:10px 0 16px;">Who We Are</h2>
       <p style="color:var(--text-muted); margin-bottom:14px;">Caleb Oil/Gas LTD was founded to bridge the gap between reliable energy supply and everyday household and business needs. What started as a single fuel outlet has grown into a full distribution network covering petrol, diesel, cooking gas and lubricants.</p>
       <p style="color:var(--text-muted);">Today, we serve individuals, families and companies who depend on us for consistent, safe and honest service every single day.</p>
     </div>
@@ -207,6 +220,15 @@
 <a href="https://wa.me/2348166492856?text=Hello%20Caleb%20Oil%2FGas%20LTD%2C%20I%27d%20like%20to%20enquire%20about%20your%20products." class="whatsapp-float" target="_blank" rel="noopener noreferrer" aria-label="Chat with us on WhatsApp">
   <svg viewBox="0 0 24 24"><path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38c1.45.79 3.08 1.21 4.79 1.21 5.46 0 9.91-4.45 9.91-9.91S17.5 2 12.04 2zm0 18.02c-1.48 0-2.93-.4-4.19-1.15l-.3-.18-3.12.82.83-3.04-.19-.31a8.02 8.02 0 0 1-1.24-4.25c0-4.42 3.6-8.02 8.02-8.02 4.42 0 8.02 3.6 8.02 8.02 0 4.42-3.6 8.02-8.02 8.02zm4.4-6.02c-.24-.12-1.43-.7-1.65-.78-.22-.08-.38-.12-.54.12-.16.24-.62.78-.76.94-.14.16-.28.18-.52.06-.24-.12-1.02-.38-1.94-1.2-.72-.64-1.2-1.43-1.34-1.67-.14-.24-.02-.37.1-.49.11-.11.24-.28.36-.42.12-.14.16-.24.24-.4.08-.16.04-.3-.02-.42-.06-.12-.54-1.3-.74-1.78-.2-.47-.4-.4-.54-.41h-.46c-.16 0-.42.06-.64.3-.22.24-.84.82-.84 2s.86 2.32.98 2.48c.12.16 1.7 2.6 4.12 3.64.58.25 1.03.4 1.38.51.58.18 1.11.16 1.53.1.47-.07 1.43-.58 1.63-1.15.2-.56.2-1.04.14-1.14-.06-.1-.22-.16-.46-.28z"/></svg>
 </a>
+
+<div class="lightbox" id="lightbox">
+  <button class="lightbox-close" aria-label="Close gallery">&times;</button>
+  <button class="lightbox-prev" aria-label="Previous image">&#10094;</button>
+  <img class="lightbox-img" src="" alt="" />
+  <button class="lightbox-next" aria-label="Next image">&#10095;</button>
+  <div class="lightbox-counter"></div>
+</div>
+
 <script src="js/main.js"></script>
 </body>
 </html>
