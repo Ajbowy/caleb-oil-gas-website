@@ -1,0 +1,9 @@
+# Local Netlify folder
+.netlify
+
+# Claude Code local settings
+.claude
+
+# Installed skill tooling (local dev environment, not part of the site)
+.agents
+skills-lock.json

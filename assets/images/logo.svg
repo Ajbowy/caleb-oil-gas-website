@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0b3d2e"/>
+      <stop offset="100%" stop-color="#1f7a4d"/>
+    </linearGradient>
+    <linearGradient id="flame" x1="0%" y1="100%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#d9a441"/>
+      <stop offset="100%" stop-color="#f0c869"/>
+    </linearGradient>
+  </defs>
+
+  <circle cx="60" cy="60" r="60" fill="url(#bg)"/>
+
+  <!-- Droplet (oil) -->
+  <path d="M60 24
+           C60 24 40 52 40 68
+           a20 20 0 0 0 40 0
+           C80 52 60 24 60 24 Z"
+        fill="#ffffff" opacity="0.94"/>
+
+  <!-- Flame (gas) accent -->
+  <path d="M63 46
+           C70 54 74 62 70 70
+           C68 74 63 76 60 74
+           C64 70 63 65 59 62
+           C56 66 55 71 58 76
+           C51 73 48 66 51 59
+           C53 55 57 52 63 46 Z"
+        fill="url(#flame)"/>
+</svg>
